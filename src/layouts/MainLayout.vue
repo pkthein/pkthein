@@ -50,21 +50,6 @@
 
         <q-space />
 
-        <!-- <div class="q-pa-md" align="center">
-          <div
-            class="text-white cursor-pointer"
-            @click="routeTo('/notices')"
-          >
-            Notices
-          </div>
-        </div> -->
-
-        <!-- <div class="q-pa-md" align="center">
-          <div class="text-white cursor-pointer" @click="routeTo('rootAbout')">
-            About Us
-          </div>
-        </div> -->
-
         <div class="q-pa-md" align="center">
           <div class="text-white">
             Follow Me On
