@@ -1,22 +1,17 @@
 <template>
   <q-page class="">
     <div class="q-mt-md">
-      <!-- <q-avatar size="300px">
-        <img src="../statics/Me.jpg">
-      </q-avatar> -->
       <q-carousel
         v-model="slide"
-        swipeable animated
-        navigation padding arrows
-        infinite
-        :autoplay="5000"
+        swipeable animated navigation padding infinite
         transition-prev="fade"
         transition-next="fade"
         control-color="primary"
+        :autoplay="8000"
       >
         <q-carousel-slide :name="1" class="column no-wrap flex-center">
           <div class="" >
-            <q-avatar size="300px">
+            <q-avatar size="300px" class="cursor-pointer" @click="slide = 2">
               <img src="../statics/CasualMe.jpg">
             </q-avatar>
           </div>
@@ -24,7 +19,7 @@
 
         <q-carousel-slide :name="2" class="column no-wrap flex-center">
           <div class="">
-            <q-avatar size="300px">
+            <q-avatar size="300px" class="cursor-pointer" @click="slide = 3">
               <img src="../statics/SeriousMe.jpg">
             </q-avatar>
           </div>
@@ -32,7 +27,7 @@
 
         <q-carousel-slide :name="3" class="column no-wrap flex-center">
           <div class="" >
-            <q-avatar size="300px">
+            <q-avatar size="300px" class="cursor-pointer" @click="slide = 1">
               <img src="../statics/Me.jpg">
             </q-avatar>
           </div>
@@ -53,7 +48,7 @@
       </div>
     </div>
 
-    <div class="" align="center">
+    <div class="i-card q-pb-md" align="center">
       <div class="text-h4 q-px-sm">
         About Me
         <q-separator color="primary"></q-separator>
