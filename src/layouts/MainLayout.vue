@@ -2,13 +2,21 @@
   <q-layout view="hHh lpR fFf">
 
     <q-header reveal elevated class="bg-primary text-white" height-hint="98">
-      <!-- <q-toolbar>
-        <q-toolbar-title>
-          Welcome
+      <q-toolbar>
+        <q-toolbar-title
+          class="text-h4 q-my-md cursor-pointer"
+          align="center"
+          @click="routeTo('/me')"
+        >
+          Phyo (Justin) Htut
         </q-toolbar-title>
-      </q-toolbar> -->
+      </q-toolbar>
 
-      <q-tabs align="left">
+      <q-separator></q-separator>
+
+      <q-tabs align="center">
+        <q-separator vertical stretch />
+
         <q-route-tab no-caps to="/me" label="About Me" />
 
         <q-separator vertical stretch />
@@ -28,8 +36,8 @@
     </q-page-container>
 
     <div class="bg-primary" style="min-height: 90px;" >
-      <div class="row" style="width: 98%; margin: 0 auto;">
-        <div class="q-pa-md">
+      <div class="" style="width: 98%; margin: 0 auto;">
+        <!-- <div class="q-pa-md"> -->
           <!-- <div class="text-white" style="font-size: 1.5em;">
             <div v-if="layoutConfig && layoutConfig.companyName" >
               Boundless Innovation @ {{ layoutConfig.companyName }}
@@ -46,9 +54,9 @@
           >
             Copyright © 2019 Wind River Systems, Inc.
           </i> -->
-        </div>
+        <!-- </div> -->
 
-        <q-space />
+        <!-- <q-space /> -->
 
         <div class="q-pa-md" align="center">
           <div class="text-white">
@@ -102,6 +110,9 @@ export default {
   methods: {
     goTo: function (path) {
       location.href = path
+    },
+    routeTo: function (path) {
+      this.$router.push(path).catch(() => false)
     }
   }
 }
