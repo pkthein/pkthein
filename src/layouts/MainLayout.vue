@@ -14,14 +14,14 @@
 
       <q-separator></q-separator>
 
-      <q-tabs align="center">
+      <q-tabs align="center" class="bg-white text-primary">
         <q-separator vertical stretch />
 
         <q-route-tab no-caps to="/me" label="About Me" />
 
         <q-separator vertical stretch />
 
-        <q-route-tab no-caps to="/experiences" label="Experiences" />
+        <q-route-tab no-caps to="/projects" label="Projects" />
 
         <q-separator vertical stretch />
 
