@@ -8,11 +8,14 @@
           :src="projects[key].video"
         />
 
-        <q-img
-          v-if="projects[key].image"
-          :ratio="4/1"
-          :src="projects[key].image"
-        />
+        <div class="q-pt-md" align="center">
+          <q-img
+            v-if="projects[key].image"
+            :ratio="4/1"
+            :src="projects[key].image"
+            style="max-width: 500px;"
+          />
+        </div>
 
         <q-separator v-if="projects[key].video"/>
 
@@ -60,6 +63,24 @@ export default {
     return {
       projects: [
         {
+          title: 'Boundless Innovation',
+          text: `The Boudless Method is program a company follows to empower all employees to be creative, to innovate - by tracking, fostering and recognizing their suggestions for new product features, tools, customer demos, open source projects or fun maker projects. We humans become higly enagaged when given the chance to share their ideas. The Boundless Ideas program builds on the principles that drive innovation in open source communities. The approach is simple:
+
+  1) Anyone can propose an idea (scratch an itch - as they say in the open source world)
+  2) Others can easily browse, view and support those ideas (visibility)
+  3) Ideas can be tracked thru multiple customized stages
+  4) Where recognition is easy to achieve even when juggling 100s (if not 1000s) of ideas and innovation proposals.
+
+This repository contains the code of a web portal that greatly facilitates the fostering and development of ideas. It enables organizations to to track develop and realize the impact of the ideas within a community or company.`,
+          hide: true,
+          video: '',
+          image: '../statics/WRS_logo.png',
+          url: {
+            label: 'Source Code',
+            link: 'https://github.com/Wind-River/boundless'
+          }
+        },
+        {
           title: 'Covid Detection App',
           text: `Seeing doctors and nurses working days and nights tirelessly on the front-line of this pandemic, we thought to ourselves "surely, there has to be something we can do to help them". To help combat this pandemic, we believe it is crucial to be able to test more people for COVID-19 without overloading medical staff. So we set out to develop an application to help medical staff diagnose COVID19 faster with higher precision using Machine Learning.
     
@@ -105,6 +126,17 @@ We want to continually improve our models' accuracy when more validated data bec
           url: {
             label: 'Source Code',
             link: 'https://github.com/pkthein/DIYup'
+          }
+        },
+        {
+          title: 'The Software Parts (SParts)',
+          text: 'The Software Parts (SParts) lab delivers a Sawtooth-based ledger that enables one to determine the chain of custody of all the software parts from which a product (e.g., IoT device) is comprised of. The ledger provides both access to and accountability for software meta information of software parts exchanged among manufacturing supply chain participants. A software part is any software component that could be represented as one or more files. (e.g., source code, binary library, application, an operating system runtime or container).',
+          hide: true,
+          video: '',
+          image: '../statics/WRS_logo.png',
+          url: {
+            label: 'Source Code',
+            link: 'https://github.com/hyperledger-labs/SParts/tree/sparts-dev'
           }
         }
       ]

@@ -71,7 +71,7 @@
           transition="flip-right"
           class="intersect-card-desktop desktop-only hoverable"
         >
-          <q-card class="q-ma-sm">
+          <q-card class="q-ma-sm" @click="dialogHelper(key)">
             <!-- <img src="https://cdn.quasar.dev/img/mountains.jpg"> -->
             <q-img
               contain
@@ -99,7 +99,7 @@
           transition="flip-right"
           class="intersect-card-mobile mobile-only"
         >
-          <q-card class="q-ma-sm">
+          <q-card class="q-ma-sm" @click="dialogHelper(key)">
             <!-- <img src="https://cdn.quasar.dev/img/mountains.jpg"> -->
             <q-img
               contain
@@ -121,7 +121,51 @@
           </q-card>
         </q-intersection>
       </div>
-    </div><br />
+    </div>
+
+    <br />
+
+    <q-dialog
+      v-model="dialogData.active"
+      transition-show="rotate"
+      transition-hide="rotate"
+    >
+      <q-card v-if="dialogData.active">
+        <q-bar class="bg-primary">
+          <q-space />
+
+          <q-btn dense flat icon="close" v-close-popup>
+            <!-- <q-tooltip content-class="bg-white text-primary">Close</q-tooltip> -->
+          </q-btn>
+        </q-bar>
+
+        <q-toolbar class="q-pb-lg bg-primary" align="center">
+          <q-toolbar-title align="center">
+            <q-avatar size="120px">
+              <img
+                :src="dialogData.data.image" style="border: solid white 2px;"
+              >
+            </q-avatar>
+            <!-- <span class="text-white text-weight-bold">
+              {{ dialogData.data.company }}
+            </span> -->
+          </q-toolbar-title>
+        </q-toolbar>
+
+        <!-- <q-card-section>
+          <pre style="maring-top: -16px;">
+{{ dialogData.description }}
+          </pre>
+        </q-card-section> -->
+        <pre class="q-px-md" style="max-width: 450px; margin-top: -8px; margin-bottom: -14px;">
+          {{ dialogData.description }}
+        </pre>
+
+        <q-card-actions align="right" class="">
+          <q-btn outline class="bg-white" label="OK" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -129,6 +173,11 @@
 export default {
   data () {
     return {
+      dialogData: {
+        active: false,
+        data: null,
+        description: null
+      },
       slide: 1,
       work: [
         {
@@ -163,7 +212,71 @@ export default {
           end: 'Oct 2014',
           image: '../statics/USMC_logo.png'
         }
+      ],
+      workDescription: [
+        {
+          description: `
+Wind River Systems
+Alameda, CA, USA
+IP Research and Development Engineering Intern
+FEB 2019 - PRESENT
+
+Innovation Tracker (Fullstack)
+MAY 2019 - PRESENT
+❖ Serves as end to end engineer for innovation project management software.
+❖ Documents the maintenance manual and user manual for the software every 3 weeks.
+❖ Containerizes the software for automation.
+❖ Technologies: Vue.js, Quasar, Firebase, and Docker.
+
+S-Parts (Blockchain: Hyperledger Sawtooth)
+FEB - MAY 2019
+❖ Re-factored the data nodes from comma-separated values (CSV) to Javascript object notation (JSON).
+❖ Designed and implemented backend APIs, which allowed the user to reconstruct states of an object associated with the UUID at any given timestamp.
+❖ Documented the user manual for the software and containerized the software for automation.
+❖ Technologies: Python, Flask, and Docker.`
+        },
+        {
+          description: `
+Youth Society for Education
+Fullstack Developer
+Daly City, CA, USA
+NOV 2017 - PRESENT
+
+❖ Helps build a custom webportal for a non-profit organization as a voluntary developer.
+❖ Designs the data model and implements components for the webportal by utilizing ReactJS and Firebase.
+❖ Serves as a git master for the project repository.
+❖ Technologies: React.js, Redux, Express.js, and Firebase.`
+        },
+        {
+          description: `
+The Coder School
+Code Coach
+San Mateo, CA, USA
+AUG 2017 - PRESENT
+
+❖ Mentors students in Python, Java, and Javascript in fundamental of programming.
+❖ Challenges students with coding puzzles to further advance their skills in algorithm, control flow, and
+data structuring.`
+        },
+        {
+          description: `
+US Marine Corps
+Enlisted Marine
+San Jose, Ca, USA
+JUL 2010- OCT 2014
+
+❖ Looked after the well-being and the readiness of each junior Marines.
+❖ Performed tasks in group settings while upholding safety standards and timely completion.`
+        }
       ]
+    }
+  },
+  methods: {
+    dialogHelper: function (index) {
+      this.dialogData.data = this.work[index]
+      this.dialogData.description = this.workDescription[index].description
+
+      this.dialogData.active = true
     }
   }
 }
@@ -171,8 +284,8 @@ export default {
 
 <style lang="stylus" scoped>
 .intersect-card-desktop {
-  height: 400px;
-  width: 400px;
+  height: 375px;
+  width: 350px;
 }
 
 .intersect-card-mobile {

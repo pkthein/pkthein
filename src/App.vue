@@ -5,14 +5,34 @@
 </template>
 
 <script >
+import { cloudStore } from './firebase/init'
+
 export default {
-  name: 'App'
+  name: 'App',
+  async created () {
+    try {
+      const doc = await cloudStore.collection('personal_website').doc('general')
+        .get()
+
+      if (doc.exists) {
+        const data = doc.data()
+
+        await cloudStore.collection('personal_website').doc('general').set({
+          visits: data.visits + 1
+        }, { merge: true })
+      } else {
+        throw new Error('Not Found!')
+      }
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 </script>
 
 <style lang="stylus">
 .i-card {
-  max-width: 1000px;
+  max-width: 800px;
   min-width: 300px;
   width: 90vw;
   margin: 0 auto;
@@ -61,4 +81,22 @@ pre {
   opacity: 1;
 }
 // -----------------------------------------------------------------------------
+
+// Scrollbar width for horizontal and vertical scrollbars
+div::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+// Scrollbar track's color and width
+div::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 2px;
+}
+
+// Scrollbar color
+div::-webkit-scrollbar-thumb {
+  background: $grey-6;
+  border-radius: 3px;
+}
 </style>
