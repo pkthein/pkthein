@@ -37,62 +37,45 @@
 
     <div class="bg-primary" style="min-height: 90px;" >
       <div class="" style="width: 98%; margin: 0 auto;">
-        <!-- <div class="q-pa-md"> -->
-          <!-- <div class="text-white" style="font-size: 1.5em;">
-            <div v-if="layoutConfig && layoutConfig.companyName" >
-              Boundless Innovation @ {{ layoutConfig.companyName }}
-            </div>
-
-            <div v-else>
-              Boundless Innovation
-            </div>
-          </div> -->
-
-          <!-- <i
-            class="text-weight-thin text-grey-5"
-            style="font-size: .9em;"
-          >
-            Copyright © 2019 Wind River Systems, Inc.
-          </i> -->
-        <!-- </div> -->
-
-        <!-- <q-space /> -->
 
         <div class="q-pa-md" align="center">
-          <div class="text-white">
-            Follow Me On
-          </div>
-
+          <!-- Follow Me -->
           <div>
-            <q-icon
-              class="cursor-pointer" color="white"
-              name="fab fa-github-square" size="2rem"
-              @click="goTo('https://www.github.com/pkthein')"
-            />
+            <div class="text-white">
+              Follow Me On
+            </div>
 
-            <!-- <q-icon
-              class="cursor-pointer" color="white"
-              name="fab fa-facebook-square" size="2rem"
-              @click="goTo('https://www.facebook.com')"
-            />
+            <div>
+              <q-icon
+                class="cursor-pointer" color="white"
+                name="fab fa-github-square" size="2rem"
+                @click="goTo('https://www.github.com/pkthein')"
+              />
 
-            <q-icon
-              class="cursor-pointer" color="white"
-              name="fab fa-instagram" size="2rem"
-              @click="goTo('https://www.instagram.com/')"
-            />
+              <!-- <q-icon
+                class="cursor-pointer" color="white"
+                name="fab fa-facebook-square" size="2rem"
+                @click="goTo('https://www.facebook.com')"
+              />
 
-            <q-icon
-              class="cursor-pointer" color="white"
-              name="fab fa-twitter-square" size="2rem"
-              @click="goTo('https://twitter.com/')"
-            /> -->
+              <q-icon
+                class="cursor-pointer" color="white"
+                name="fab fa-instagram" size="2rem"
+                @click="goTo('https://www.instagram.com/')"
+              />
 
-            <q-icon
-              class="cursor-pointer" color="white"
-              name="fab fa-linkedin" size="2rem"
-              @click="goTo('https://linkedin.com/in/pkthein')"
-            />
+              <q-icon
+                class="cursor-pointer" color="white"
+                name="fab fa-twitter-square" size="2rem"
+                @click="goTo('https://twitter.com/')"
+              /> -->
+
+              <q-icon
+                class="cursor-pointer" color="white"
+                name="fab fa-linkedin" size="2rem"
+                @click="goTo('https://linkedin.com/in/pkthein')"
+              />
+            </div>
           </div>
         </div>
 
