@@ -5,27 +5,27 @@
 </template>
 
 <script >
-// import { cloudStore } from './firebase/init'
+import { cloudStore } from './firebase/init'
 
 export default {
   name: 'App',
   async created () {
-    // try {
-    //   const doc = await cloudStore.collection('personal_website').doc('general')
-    //     .get()
+    try {
+      const doc = await cloudStore.collection('personal_website').doc('general')
+        .get()
 
-    //   if (doc.exists) {
-    //     const data = doc.data()
+      if (doc.exists) {
+        const data = doc.data()
 
-    //     await cloudStore.collection('personal_website').doc('general').set({
-    //       visits: data.visits + 1
-    //     }, { merge: true })
-    //   } else {
-    //     throw new Error('Not Found!')
-    //   }
-    // } catch (error) {
-    //   throw new Error(error)
-    // }
+        await cloudStore.collection('personal_website').doc('general').set({
+          visits: data.visits + 1
+        }, { merge: true })
+      } else {
+        throw new Error('Not Found!')
+      }
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 }
 </script>
