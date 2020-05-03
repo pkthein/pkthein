@@ -35,6 +35,25 @@
       <router-view />
     </q-page-container>
 
+    <div class="q-gutter-md q-mb-lg" align="center">
+      <div>
+        <q-btn
+          outline style="min-width: 280px;"
+          @click="contactHelper"
+        >
+          Contact Me
+        </q-btn>
+      </div>
+
+      <!-- <div>
+        <q-btn outline style="min-width: 280px;">Projects</q-btn>
+      </div>
+
+      <div>
+        <q-btn outline style="min-width: 280px;">Resume</q-btn>
+      </div> -->
+    </div>
+
     <div class="bg-primary" style="min-height: 90px;" >
       <div class="" style="width: 98%; margin: 0 auto;">
 
@@ -81,6 +100,66 @@
 
       </div>
     </div>
+
+    <!-- Dialog for Contact Me -->
+    <q-dialog
+      persistent
+      v-model="contactDialog.active"
+      transition-show="slide-up"
+      transition-hide="slide-down"
+    >
+      <q-card
+        v-if="contactDialog.active"
+        style="min-width: 280px; max-width: 500px; width: 98vw;"
+      >
+        <q-form @submit="onSubmit">
+          <q-bar class="bg-primary">
+            <span class="text-white" style="font-size: 16px;">Contact Me</span>
+
+            <q-space />
+
+            <q-btn dense flat icon="close" v-close-popup />
+          </q-bar>
+
+          <div class="q-px-sm q-pt-md q-gutter-sm">
+            <q-input
+              dense outlined required
+              v-model="contactDialog.subject"
+              label="Subject" type="text"
+            />
+
+            <q-input
+              dense outlined required
+              v-model="contactDialog.email"
+              label="Return Email" type="email"
+            />
+
+            <div>
+              <q-input
+                dense outlined required
+                v-model="contactDialog.body"
+                label="Description" type="textarea"
+              />
+            </div>
+          </div>
+
+          <q-card-actions align="right" class="">
+            <q-btn
+              :disable="
+                !contactDialog.email || !contactDialog.subject ||
+                !contactDialog.body
+              "
+              :color="
+                !contactDialog.email || !contactDialog.subject ||
+                !contactDialog.body ? 'negative' : 'positive'
+              "
+              outline type="submit" label="Send" v-close-popup
+            />
+            <q-btn outline class="bg-white" label="Close" v-close-popup />
+          </q-card-actions>
+        </q-form>
+      </q-card>
+    </q-dialog>
   </q-layout>
 </template>
 
@@ -88,6 +167,12 @@
 export default {
   data () {
     return {
+      contactDialog: {
+        active: false,
+        subject: null,
+        email: null,
+        body: null
+      }
     }
   },
   methods: {
@@ -96,6 +181,29 @@ export default {
     },
     routeTo: function (path) {
       this.$router.push(path).catch(() => false)
+    },
+    contactHelper: function () {
+      this.contactDialog.subject = ''
+      this.contactDialog.email = ''
+      this.contactDialog.body = ''
+
+      this.contactDialog.active = true
+    },
+    onSubmit: function () {
+      this.$q.notify({
+        message: 'I will get back to you as soon as possible.',
+        position: 'bottom',
+        timeout: 2000,
+        color: 'positive',
+        textColor: 'white',
+        icon: 'check',
+        actions: [
+          {
+            icon: 'close',
+            color: 'white'
+          }
+        ]
+      })
     }
   }
 }

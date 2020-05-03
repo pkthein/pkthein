@@ -11,6 +11,8 @@
       src="../statics/Resume_Phyo_Htut.pdf"
       width="100%" style="min-height: 95vh;">
     </iframe>
+
+    <br/><br/>
   </q-page>
 </template>
 
