@@ -38,8 +38,9 @@
     <div class="q-gutter-md q-mb-lg" align="center">
       <div>
         <q-btn
-          outline style="min-width: 280px;"
+          flat style="min-width: 280px; border: black solid 1px;"
           @click="contactHelper"
+          class="text-primary"
         >
           Contact Me
         </q-btn>
@@ -177,7 +178,7 @@ export default {
   },
   methods: {
     goTo: function (path) {
-      location.href = path
+      window.open(path, '_blank', 'noopener')
     },
     routeTo: function (path) {
       this.$router.push(path).catch(() => false)

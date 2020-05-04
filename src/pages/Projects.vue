@@ -20,7 +20,26 @@
         <q-separator v-if="projects[key].video"/>
 
         <q-card-section class="" style="">
-          <div class="text-h6">{{ projects[key].title }}</div>
+          <div class="row">
+            <div class="text-h6">{{ projects[key].title }}</div>
+            <q-space></q-space>
+            <!-- <a
+              v-if="projects[key].url.link"
+              :href="projects[key].url.link"
+            >
+              {{ projects[key].url.label }}
+            </a> -->
+            <div v-if="projects[key].url.link" class="q-mb-xs">
+              <q-btn
+                dense rounded no-caps flat
+                class="q-px-sm" color="primary"
+                style="border: black solid 1px;"
+                :icon="projects[key].url.icon"
+                :label="projects[key].url.label"
+                @click="goTo(projects[key].url.link)"
+              />
+            </div>
+          </div>
 
           <q-separator color="primary"/>
           <q-separator/>
@@ -44,12 +63,7 @@
 <pre @click="projects[key].hide = true">
 {{ projects[key].text }}
 </pre>
-            <a
-              v-if="projects[key].url.link"
-              :href="projects[key].url.link"
-            >
-              {{ projects[key].url.label }}
-            </a>
+
           </div>
         </q-card-section>
       </q-card>
@@ -76,7 +90,8 @@ This repository contains the code of a web portal that greatly facilitates the f
           video: '',
           image: '../statics/WRS_logo.png',
           url: {
-            label: 'Source Code',
+            label: 'Source',
+            icon: 'code',
             link: 'https://github.com/Wind-River/boundless'
           }
         },
@@ -91,7 +106,8 @@ We want to continually improve our models' accuracy when more validated data bec
           video: 'https://www.youtube.com/embed/BUGDHaZMFGc',
           image: '',
           url: {
-            label: 'Demo App =)',
+            label: 'Demo',
+            icon: 'widgets',
             link: 'http://54.177.231.146/'
           }
         },
@@ -102,7 +118,8 @@ We want to continually improve our models' accuracy when more validated data bec
           video: '',
           image: '../statics/SFSU_logo.png',
           url: {
-            label: 'Demo App =)',
+            label: 'Demo',
+            icon: 'widgets',
             link: 'https://photowall-257b0.web.app/#/login'
           }
         },
@@ -113,7 +130,8 @@ We want to continually improve our models' accuracy when more validated data bec
           video: '',
           image: '../statics/SFSU_logo.png',
           url: {
-            label: 'Source Code',
+            label: 'Source',
+            icon: 'code',
             link: 'https://github.com/pkthein/RedditLite'
           }
         },
@@ -124,22 +142,29 @@ We want to continually improve our models' accuracy when more validated data bec
           video: '',
           image: '../statics/SFSU_logo.png',
           url: {
-            label: 'Source Code',
+            label: 'Source',
+            icon: 'code',
             link: 'https://github.com/pkthein/DIYup'
           }
         },
         {
-          title: 'The Software Parts (SParts)',
+          title: 'SParts',
           text: 'The Software Parts (SParts) lab delivers a Sawtooth-based ledger that enables one to determine the chain of custody of all the software parts from which a product (e.g., IoT device) is comprised of. The ledger provides both access to and accountability for software meta information of software parts exchanged among manufacturing supply chain participants. A software part is any software component that could be represented as one or more files. (e.g., source code, binary library, application, an operating system runtime or container).',
           hide: true,
           video: '',
           image: '../statics/WRS_logo.png',
           url: {
-            label: 'Source Code',
+            label: 'Source',
+            icon: 'code',
             link: 'https://github.com/hyperledger-labs/SParts/tree/sparts-dev'
           }
         }
       ]
+    }
+  },
+  methods: {
+    goTo: function (path) {
+      window.open(path, '_blank', 'noopener')
     }
   }
 }
