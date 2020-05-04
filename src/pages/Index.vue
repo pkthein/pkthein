@@ -45,10 +45,10 @@
 
     <!-- About Me -->
     <div class="i-card q-pb-md" align="center">
-      <div class="text-h4 q-px-sm">
+      <div class="text-h4 q-px-sm q-py-md">
         About Me
-        <q-separator color="primary"></q-separator>
       </div>
+      <q-separator color="primary"></q-separator>
 
       <div align="left" class="q-px-md q-pt-sm">
         Hello all! My name is Phyo Htut, and I am currently attending San Francisco State University (SFSU) for M.S in Computer Science. As for the focus, I am focusing on web development and internet applications. I did my undergrad in Electrical Engineering & Computer Science (EECS) at University of California, Berkeley (UCB).
@@ -58,14 +58,12 @@
       </div>
     </div>
 
-    <br />
-
     <!-- Work Experiences -->
     <div class="i-card" align="center">
-      <div class="text-h4 q-px-sm">
+      <div class="text-h4 q-px-sm q-py-md">
         Work Experiences
-        <q-separator color="primary"></q-separator>
       </div>
+      <q-separator color="primary"></q-separator>
 
       <div class="row q-px-md q-pt-sm justify-center q-gutter-sm">
         <q-intersection
