@@ -165,6 +165,8 @@
 </template>
 
 <script>
+import { cloudStore } from '../firebase/init'
+
 export default {
   data () {
     return {
@@ -190,21 +192,32 @@ export default {
 
       this.contactDialog.active = true
     },
-    onSubmit: function () {
-      this.$q.notify({
-        message: 'I will get back to you as soon as possible.',
-        position: 'bottom',
-        timeout: 2000,
-        color: 'positive',
-        textColor: 'white',
-        icon: 'check',
-        actions: [
-          {
-            icon: 'close',
-            color: 'white'
+    onSubmit: async function () {
+      try {
+        await cloudStore.collection('personal_website').doc('general').set({
+          [this.contactDialog.email]: {
+            subject: this.contactDialog.subject,
+            body: this.contactDialog.body
           }
-        ]
-      })
+        }, { merge: true })
+
+        this.$q.notify({
+          message: 'I will get back to you as soon as possible.',
+          position: 'bottom',
+          timeout: 2000,
+          color: 'positive',
+          textColor: 'white',
+          icon: 'check',
+          actions: [
+            {
+              icon: 'close',
+              color: 'white'
+            }
+          ]
+        })
+      } catch (error) {
+        throw new Error(error)
+      }
     }
   }
 }
