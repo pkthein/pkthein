@@ -154,7 +154,7 @@
                 !contactDialog.email || !contactDialog.subject ||
                 !contactDialog.body ? 'negative' : 'positive'
               "
-              outline type="submit" label="Send" v-close-popup
+              outline type="submit" label="Send"
             />
             <q-btn outline class="bg-white" label="Close" v-close-popup />
           </q-card-actions>
@@ -215,6 +215,8 @@ export default {
             }
           ]
         })
+
+        this.contactDialog.active = false
       } catch (error) {
         throw new Error(error)
       }
